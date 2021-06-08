@@ -1,0 +1,26 @@
+* {
+    outline: 1px clear solid;
+}
+#wrapper, #wrapper-edit, #footer, #wrapper-new {
+    margin: 50px;
+}
+#wrapper-edit, #wrapper-new {
+    max-width: 600px;
+}
+#table-contain {
+    margin: 50px 0px;
+}
+.button {           /* styling changes button appearance to a link */
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.title {
+    margin-top: 50px;
+}
+.float {
+    margin-right: 50px;
+    float:right;
+}
