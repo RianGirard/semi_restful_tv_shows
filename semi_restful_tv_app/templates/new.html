@@ -13,17 +13,20 @@
     <a href="/"><button class="button float">Go Back</button></a>
     <div id="wrapper-new">
         <h1>Add a New Show:</h1>
+
+
+
         <form method="POST" action="create">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" required>
+                <input type="text" class="form-control" name="title">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="network">Network</label>
-                    <select class="form-control" name="network" required>
-                        <option selected>--</option>
+                    <select class="form-control" name="network">
+                        <option selected></option>
                         <option>Disney+</option>
                         <option>Fox</option>
                         <option>PBS</option>
@@ -32,15 +35,23 @@
                 </div>
                 <div class="form-group date-pick col-md-7">
                     <label for="release_date">Release Date</label>
-                    <input type="date" class="form-control" name="release_date" required>
+                    <input type="date" class="form-control" name="release_date">
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" class="form-control" name="description" required>
+                <input type="text" class="form-control" name="description">
             </div>
             <input type="submit" class="btn btn-primary" value="Create">
         </form>
+        {% if messages %}
+        <h4 class="messages">Entry errors:</h4>
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS errors with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 </body>
 </html>

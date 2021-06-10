@@ -37,6 +37,13 @@
             </table>
         </div>
         <a href="/new">Add a New Show</a>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS success with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div> 
 </body>
 </html>

@@ -21,6 +21,13 @@
     </div>
     <div id="footer">
         <a href="{{show.id}}/edit"><button class="button" type="submit">Edit</button></a> | <a href="{{show.id}}/destroy"><button class="button" type="submit">Delete</button></a></td>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS errors with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 </body>
 </html>

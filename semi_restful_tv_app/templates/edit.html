@@ -13,16 +13,25 @@
     <a href="/"><button class="button float">Go Back</button></a>
     <div id="wrapper-edit">
         <h1>Edit Show {{show.id}}:</h1>
+
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS errors with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form method="POST" action="update">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" value="{{show.title}}" required>
+                <input type="text" class="form-control" name="title" value="{{show.title}}">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="network">Network</label>
-                    <select class="form-control" name="network" required>
+                    <select class="form-control" name="network">
                         <option selected value="{{show.network}}">{{show.network}}</option>
                         <option>Disney+</option>
                         <option>Fox</option>
@@ -32,7 +41,7 @@
                 </div>
                 <div class="form-group date-pick col-md-7">
                     <label for="release_date">Release Date</label>
-                    <input type="date" class="form-control" name="release_date" value="{{show.release_date|date:"Y-m-d"}}" required>
+                    <input type="date" class="form-control" name="release_date" value="{{show.release_date|date:"Y-m-d"}}">
             <!-- input type "date" gives you the field datepicker; "date" input requires that value be given as YYYY-MM-DD, hence the django template formmating -->
             <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
             <!-- https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date -->
@@ -40,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" class="form-control" name="description" value="{{show.description}}" required>
+                <input type="text" class="form-control" name="description" value="{{show.description}}">
             </div>
             <input type="submit" class="btn btn-primary" value="Update">
         </form>
