@@ -77,5 +77,23 @@ def create(request):
     return redirect('/shows')
 
 
+def title_valid_null(request):
+    # this is just here to deal will null text entry cases
+    found = 3
+    return render(request, 'partials/title.html', {"found":found})
+
+
+def title_valid(request, title):
+    list = Show.objects.filter(title = title)
+    print('made it!')
+    found = 2
+    if len(list) > 0:
+        found = 1
+    return render(request, 'partials/title.html', {"found":found})  # found is "like" context and must be a dict datatype
+    
+
+
+
+
 # Create your views here.
 

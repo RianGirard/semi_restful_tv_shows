@@ -1,0 +1,18 @@
+<style type="text/css" media="screen">
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
+</style>
+
+{% if found == 1 %}
+<p class="error">Show already in database!</p>
+{% endif %}
+{% if found == 2 %}
+<p class="success">New Title</p>
+{% endif %}
+{% if found == 3 %}
+<p class="success"></p>     <!-- Number 3 is here to deal with null text entry cases>> -->
+{% endif %}

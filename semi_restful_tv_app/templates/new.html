@@ -13,14 +13,12 @@
     <a href="/"><button class="button float">Go Back</button></a>
     <div id="wrapper-new">
         <h1>Add a New Show:</h1>
-
-
-
         <form method="POST" action="create">
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="form-control" id="title" name="title">
+                <h6 id="show_title_valid"></h6>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
@@ -31,6 +29,7 @@
                         <option>Fox</option>
                         <option>PBS</option>
                         <option>ESPN</option>
+                        <option>Amazon</option>
                     </select>
                 </div>
                 <div class="form-group date-pick col-md-7">
@@ -53,5 +52,7 @@
         </ul>
         {% endif %}
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/show.js' %}"></script>
 </body>
 </html>
